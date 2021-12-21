@@ -40,6 +40,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     names = input("Enter names (sep. by spaces): ").split()
+    if len(names) < 2:
+        print("Invalid number of players.")
+        exit(1)
 
     width, height = os.get_terminal_size()
     total_cards = len(names) # Total number of cards involved in the current round
@@ -104,3 +107,4 @@ if __name__ == "__main__":
     # Print final state of board
     if args.nodisplay:
         print(table)
+    exit(0)
