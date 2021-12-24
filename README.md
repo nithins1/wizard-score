@@ -10,6 +10,7 @@ First enter the names of the players. Then, each round, do the following:
 - After the round is complete, enter the number of tricks each player won
 
 ![Example score sheet for round 1](https://images2.imgbox.com/1f/3b/4Tg6hNZK_o.png)
+
 After each round, the results table is printed. The upper two numbers in each box are the player's bid and actual number of tricks won, and the lower number is the player's current score. This format is similar to a traditional [paper-and-pencil scorecard](https://www.usgamesinc.com/images/wizard_score_sheet.pdf).
 
 All user inputs during the game must be integers. If the program encounters an input that is not an integer or is invalid (e.g. bidding 4 when there are only 3 cards) it retries the query.
