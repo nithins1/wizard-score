@@ -37,6 +37,7 @@ if __name__ == "__main__":
     parser.add_argument("-n", "--nodisplay", action="store_true", help="only display table at the end of the game")
     parser.add_argument("-b", "--base", type=int, default=10, metavar="<points>", help="base points awarded for bidding correctly")
     parser.add_argument("-p", "--per", type=int, default=10, metavar="<points>", help="points gained/lost per bid")
+    parser.add_argument("-c", "--cards", type=int, default=60, metavar="<cards>", help="total cards in game")
     args = parser.parse_args()
 
     names = input("Enter names (sep. by spaces): ").split()
@@ -62,7 +63,7 @@ if __name__ == "__main__":
     table += "|\n"
     row_break = '-' * (len(table) - 1) + "\n" # Dashed line to break up table
     table = row_break + table + row_break
-    while total_cards <= 60:
+    while total_cards <= args.cards:
         print(f"ROUND {round_num}".center(width, '-'))
 
         bids = {} # Bid for each player in the current round
@@ -89,8 +90,11 @@ if __name__ == "__main__":
 
         # Compute current score for every player
         for n in names:
+            # Bid was correct
             if bids[n] == wins[n]:
                 score[n] += args.base + wins[n] * args.per
+
+            # Bid was incorrect
             else:
                 score[n] -= abs(wins[n] - bids[n]) * args.per
 
