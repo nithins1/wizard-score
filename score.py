@@ -2,6 +2,10 @@ from collections import defaultdict
 import os
 import argparse
 
+try:
+    width, height = os.get_terminal_size()
+except:
+    width, height = 80, 24
 has_termcolor = True
 
 # termcolor is recommended but not necessary
@@ -45,7 +49,6 @@ if __name__ == "__main__":
         print("Invalid number of players.")
         exit(1)
 
-    width, height = os.get_terminal_size()
     total_cards = len(names) # Total number of cards involved in the current round
     round_num = 1 # Current round number
     cell_size = len(max(names, key=len)) + 2 # Number of characters in each cell in table
